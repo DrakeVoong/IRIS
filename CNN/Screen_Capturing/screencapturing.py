@@ -85,8 +85,8 @@ while(True):
     screenshot = ImageGrab.grab(bbox=(rect[0], rect[1], rect[2], rect[3]))
     screenshot_name = frame_count
 
-    #screenshot.save(f'{screenshot_name}.jpeg')
-    screenshots.append((screenshot_name, screenshot))
+    screenshot.save(f'{screenshot_name}.jpeg')
+    # screenshots.append((screenshot_name, screenshot))
 
     with open('data.txt', '+a', encoding='utf-8') as file:
         file.write(f'{screenshot_name}\t{input}\n')
@@ -94,12 +94,12 @@ while(True):
     # print(input['keyboard'])
     print('FPS {}'.format(1 / (time() - loop_time)))
     loop_time = time()
-
+    """
     if len(screenshots) > 100:
         for screenshot_name, screenshot in screenshots:
             screenshot.save(f'{screenshot_name}.jpeg')
         screenshots = []
-
+    """
     """
     screenshot = np.array(screenshot)
     screenshot = cv.cvtColor(screenshot, cv.COLOR_RGB2BGR)
@@ -116,8 +116,8 @@ while(True):
     if cv.waitKey(1) == ord('q'):
         break
     """
-
+"""
 for screenshot_name, screenshot in screenshots:
     screenshot.save(f'{screenshot_name}.jpeg')
-
+"""
 # cv.destroyAllWindows()
