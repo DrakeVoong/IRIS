@@ -1,3 +1,9 @@
 CNN/Screen_Capturing/Data
 CNN/Screen_Capturing/TestData
 CNN/Screen_Capturing/ProcessedData
+RedditAnalysis/new_cdata.csv
+RedditAnalysis/new_data.csv
+RedditAnalysis/config.ini
+Transformer/transformer.h5
+WikipediaScraper/data
+temp.py
