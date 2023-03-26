@@ -20,10 +20,10 @@ def save_data_txt(file_name, data):
                 line = re.sub(r'\[[0-9]*\]', ' ', line)
                 f.write(line)
 
-def scrape():
+def scrape(language):
     session = requests.Session()
     while True:
-        url = 'https://en.wikipedia.org/wiki/Special:Random' #Special:Random
+        url = f'https://{language}.wikipedia.org/wiki/Special:Random' #Special:Random
 
         #response = requests.get(url)
         response = session.get(url)
@@ -54,23 +54,20 @@ def scrape():
 
         article = ' '.join(article)
         article = re.sub(r'\[[0-9]*\]', ' ', article)
+        #article = re.sub(r'[^\x00-\x7F\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]', ' ', article)  # remove non-ASCII and non-Japanese/Chinese characters
+        #article = re.sub(r'[\s&&[^\n\t]]+', ' ', article) # replace multiple spaces with a single space, but keep newlines and tabs
 
         print(title)
         data = {'title': [str(title)], 'article': [str(article)]}
 
         save_data_csv('.//WikipediaScraper/data.csv', data)
 
-"""
-        saved_path = f'.//WikipediaScraper/data/{title}.txt'
-        save_data_txt(saved_path, article)
-"""
-# run 2 scrape() as a thread
-thread1 = threading.Thread(target=scrape)
-thread1.start()
-thread2 = threading.Thread(target=scrape)
-thread2.start()
-thread3 = threading.Thread(target=scrape)
-thread3.start()
-thread1.join()
-thread2.join()
-thread3.join()
+
+
+languages = ['en', 'fr', 'jp', 'es', 'zh']
+threads = []
+
+for language in languages:
+    thread = threading.Thread(target=scrape, args=(language,))
+    threads.append(thread)
+    thread.start()
