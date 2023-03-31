@@ -22,7 +22,7 @@ class RedditBot:
         # Initialize an instance of reddit class from PRAW
         # Grab account credentials
         config = configparser.ConfigParser()
-        config.read(".//RedditAnalysis/config.ini")
+        config.read(".//config.ini")
         print(config.sections())
 
         client_id = 'wUUB9pZ2ukhl_w6Yg77IYw'
