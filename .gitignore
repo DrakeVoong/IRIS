@@ -3,11 +3,11 @@ CNN/Screen_Capturing/TestData
 CNN/Screen_Capturing/ProcessedData
 RedditAnalysis/new_cdata.csv
 RedditAnalysis/new_data.csv
-RedditAnalysis/config.ini
 StackExchange/qna.csv
 StackExchange/questions.csv
 Transformer/data.db
 Transformer/transformer.h5
 Transformer/transformer.prof
 WikipediaScraper/data.csv
+config.ini
 temp.py
